@@ -15,7 +15,7 @@ function item(gtin) {
   });
 }
 
-//PUT a new item or update an existing one
+//updates an existing item
 function update(gtin, options) {
   return new Promise((resolve, reject) => {
     request.put({
@@ -24,6 +24,25 @@ function update(gtin, options) {
     }, function(error, response, body) {
       if (error) return reject(error);
       resolve(JSON.parse(body));
+    });
+  });
+}
+
+//PUT a new item and check before if it really does not exist
+function add(gtin, options) {
+  return new Promise((resolve, reject) => {
+    item(gtin).then(function(data, error) {
+      if (typeof data.message != 'undefined') {
+        request.put({
+          url: `${host}/api/items/${gtin}?version=${version}`,
+          form: options
+        }, function(error, response, body) {
+          if (error) return reject(error);
+          resolve(JSON.parse(body));
+        });
+      } else {
+        reject(new Error('The item does already exist!'));
+      }
     });
   });
 }
@@ -113,7 +132,7 @@ function image(gtin, image) {
 exports.item = item;
 
 exports.update = update;
-exports.add = update;
+exports.add = add;
 
 exports.list = list;
 

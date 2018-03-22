@@ -15,9 +15,10 @@ npm install datakick --save
 ```javascript
 const datakick = require('datakick');
 
-datakick.item('4335896051932').then(function(data, error) {
-  if (error) console.log(error);
+datakick.item('4335896051932').then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
@@ -26,57 +27,76 @@ datakick.item('4335896051932').then(function(data, error) {
 ### Get an item by its GTIN
 
 ```javascript
-datakick.item('4335896051932').then(function(data, error) {
-  if (error) console.log(error);
+datakick.item('4335896051932').then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
-### Update or add a new item
+### Update an existing item
+
+```javascript
+datakick.update('000000000000', {
+  name: 'Test',
+  brand_name: 'Test Brand'
+}).then(function(data) {
+  console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
+});
+```
+
+### Add a new item
 
 ```javascript
 datakick.add('000000000000', {
   name: 'Test',
   brand_name: 'Test Brand'
-}).then(function(data, error) {
-  if (error) console.log(error);
+}).then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
 ### List the first 100 products
 
 ```javascript
-datakick.list().then(function(data, error) {
-  if (error) console.log(error);
+datakick.list().then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
 ### List all items of a specific page
 
 ```javascript
-datakick.page('20').then(function(data, error) {
-  if (error) console.log(error);
+datakick.page('20').then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
 ### Search for items
 
 ```javascript
-datakick.query('peanut butter').then(function(data, error) {
-  if (error) console.log(error);
+datakick.query('peanut butter').then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
 ### Upload an image
 
 ```javascript
-datakick.image('000000000000', 'image.jpg').then(function(data, error) {
-  if (error) console.log(error);
+datakick.image('000000000000', 'image.jpg').then(function(data) {
   console.log(JSON.stringify(data));
+}).catch(function(error) {
+  console.log(error.message);
 });
 ```
 
