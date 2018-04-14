@@ -8,6 +8,8 @@ const version = '1';
 //GET information about an item
 function item(gtin) {
   return new Promise((resolve, reject) => {
+    if (!gtin) return reject(new ReferenceError('No GTIN or EAN specified'));
+
     request(`${host}/api/items/${gtin}?version=${version}`, function(error, response, body) {
       if (error) return reject(error);
       resolve(JSON.parse(body));
@@ -18,6 +20,8 @@ function item(gtin) {
 //updates an existing item
 function update(gtin, options) {
   return new Promise((resolve, reject) => {
+    if (!gtin) return reject(new ReferenceError('No GTIN or EAN specified'));
+
     request.put({
       url: `${host}/api/items/${gtin}?version=${version}`,
       form: options
@@ -31,6 +35,8 @@ function update(gtin, options) {
 //PUT a new item and check before if it really does not exist
 function add(gtin, options) {
   return new Promise((resolve, reject) => {
+    if (!gtin) return reject(new ReferenceError('No GTIN or EAN specified'));
+
     item(gtin).then(function(data, error) {
       if (typeof data.message != 'undefined') {
         request.put({
@@ -60,6 +66,8 @@ function list() {
 //GET items by their page
 function page(page) {
   return new Promise((resolve, reject) => {
+    if (!page) return reject(new ReferenceError('No page specified'));
+
     request(`${host}/api/items/?page=${page}&version=${version}`, function(error, response, body) {
       if (error) return reject(error);
       resolve(JSON.parse(body));
@@ -102,6 +110,8 @@ function query(query) {
     'version': `${version}`
   });
   return new Promise((resolve, reject) => {
+    if (!query) return reject(new ReferenceError('No query specified'));
+
     request(`${host}/api/items/?${queryString}`, function(error, response, body) {
       if (error) return reject(error);
       resolve(JSON.parse(body));

@@ -1,0 +1,8 @@
+{
+  "quotmark": true,
+  "esversion": 6,
+  "maxlen": 100,
+
+  "browser": true,
+  "node": true
+}
