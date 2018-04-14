@@ -1,6 +1,8 @@
 # datakick
 
-[![dependencies Status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick) [![Travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick) [![NPM Version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick) [![NPM Downloads](https://img.shields.io/npm/dm/datakick.svg)](https://www.npmjs.org/package/datakick)
+[![dependencies Status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick) [![Travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick) [![NPM Version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick) [![NPM Downloads](https://img.shields.io/npm/dt/datakick.svg)](https://www.npmjs.org/package/datakick) ![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/ENT8R/datakick.svg) ![npm](https://img.shields.io/npm/l/datakick.svg)
+![Github file size](https://img.shields.io/github/size/ENT8R/datakick/index.min.js.svg)
+
 
 NodeJS module for making requests to the [Datakick API](https://www.datakick.org/api)
 

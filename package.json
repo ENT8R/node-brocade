@@ -2,10 +2,12 @@
   "name": "datakick",
   "version": "1.1.0",
   "description": "A library for making requests to the datakick.org API",
-  "main": "index.js",
+  "main": "index.min.js",
   "scripts": {
     "start": "node index.js",
+    "build": "minify index.js --out-file index.min.js",
     "test": "nyc mocha && jshint index.js && jshint test/test.js",
+    "mocha": "mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -22,6 +24,7 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
+    "babel-minify": "^0.4.0",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "jshint": "^2.9.5",
