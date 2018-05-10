@@ -2,6 +2,7 @@
 
 [![dependencies Status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick) [![Travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick) [![NPM Version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick) [![NPM Downloads](https://img.shields.io/npm/dt/datakick.svg)](https://www.npmjs.org/package/datakick) ![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/ENT8R/datakick.svg) ![npm](https://img.shields.io/npm/l/datakick.svg)
 ![Github file size](https://img.shields.io/github/size/ENT8R/datakick/index.min.js.svg)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FENT8R%2Fdatakick.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FENT8R%2Fdatakick?ref=badge_shield)
 
 
 NodeJS module for making requests to the [Datakick API](https://www.datakick.org/api)
@@ -105,3 +106,6 @@ datakick.image('000000000000', 'image.jpg').then(function(data) {
 ## License
 
 [GPL-3.0](https://github.com/ENT8R/datakick/blob/master/LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FENT8R%2Fdatakick.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FENT8R%2Fdatakick?ref=badge_large)
