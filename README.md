@@ -1,6 +1,6 @@
 # datakick
 
-[![dependencies Status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick) [![Travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick) [![NPM Version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick) [![NPM Downloads](https://img.shields.io/npm/dt/datakick.svg)](https://www.npmjs.org/package/datakick) ![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/ENT8R/datakick.svg) ![npm](https://img.shields.io/npm/l/datakick.svg)
+[![dependencies Status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick) [![Travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick) [![NPM Version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick) [![NPM Downloads](https://img.shields.io/npm/dt/datakick.svg)](https://www.npmjs.org/package/datakick) [![Coverage Status](https://coveralls.io/repos/github/ENT8R/datakick/badge.svg?branch=master)](https://coveralls.io/github/ENT8R/datakick?branch=master)![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/ENT8R/datakick.svg) ![npm](https://img.shields.io/npm/l/datakick.svg)
 ![Github file size](https://img.shields.io/github/size/ENT8R/datakick/index.min.js.svg)
 
 

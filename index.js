@@ -5,46 +5,64 @@ const fs = require('fs');
 const host = 'https://www.datakick.org';
 const version = '1';
 
-//GET information about an item
+// GET information about an item
 function item(gtin) {
   return new Promise((resolve, reject) => {
-    if (!gtin) return reject(new ReferenceError('No GTIN or EAN specified'));
+    if (!gtin) {
+      return reject(new ReferenceError('No GTIN or EAN specified'));
+    }
 
-    request(`${host}/api/items/${gtin}?version=${version}`, function(error, response, body) {
-      if (error) return reject(error);
-      resolve(JSON.parse(body));
+    return request(`${host}/api/items/${gtin}?version=${version}`, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(JSON.parse(body));
     });
   });
 }
 
-//updates an existing item
+// updates an existing item
 function update(gtin, options) {
   return new Promise((resolve, reject) => {
-    if (!gtin) return reject(new ReferenceError('No GTIN or EAN specified'));
+    if (!gtin) {
+      return reject(new ReferenceError('No GTIN or EAN specified'));
+    }
+    if (!options) {
+      return reject(new ReferenceError('No fields to update specified'));
+    }
 
-    request.put({
+    return request.put({
       url: `${host}/api/items/${gtin}?version=${version}`,
       form: options
-    }, function(error, response, body) {
-      if (error) return reject(error);
-      resolve(JSON.parse(body));
+    }, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(JSON.parse(body));
     });
   });
 }
 
-//PUT a new item and check before if it really does not exist
+// PUT a new item and check before if it really does not exist
 function add(gtin, options) {
   return new Promise((resolve, reject) => {
-    if (!gtin) return reject(new ReferenceError('No GTIN or EAN specified'));
+    if (!gtin) {
+      return reject(new ReferenceError('No GTIN or EAN specified'));
+    }
+    if (!options) {
+      return reject(new ReferenceError('No fields to add specified'));
+    }
 
-    item(gtin).then(function(data, error) {
+    return item(gtin).then((data) => {
       if (typeof data.message != 'undefined') {
         request.put({
           url: `${host}/api/items/${gtin}?version=${version}`,
           form: options
-        }, function(error, response, body) {
-          if (error) return reject(error);
-          resolve(JSON.parse(body));
+        }, (error, response, body) => {
+          if (error) {
+            return reject(error);
+          }
+          return resolve(JSON.parse(body));
         });
       } else {
         reject(new Error('The item does already exist!'));
@@ -53,29 +71,35 @@ function add(gtin, options) {
   });
 }
 
-//GET a list of the first 100 items
+// GET a list of the first 100 items
 function list() {
   return new Promise((resolve, reject) => {
-    request(`${host}/api/items/?version=${version}`, function(error, response, body) {
-      if (error) return reject(error);
-      resolve(JSON.parse(body));
+    request(`${host}/api/items/?version=${version}`, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(JSON.parse(body));
     });
   });
 }
 
-//GET items by their page
+// GET items by their page
 function page(page) {
   return new Promise((resolve, reject) => {
-    if (!page) return reject(new ReferenceError('No page specified'));
+    if (!page) {
+      return reject(new ReferenceError('No page specified'));
+    }
 
-    request(`${host}/api/items/?page=${page}&version=${version}`, function(error, response, body) {
-      if (error) return reject(error);
-      resolve(JSON.parse(body));
+    return request(`${host}/api/items/?page=${page}&version=${version}`, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(JSON.parse(body));
     });
   });
 }
 
-/*function all() {
+/* function all() {
   return getAll(`${host}/api/items?version=${version}`);
 }
 function getAll(url) {
@@ -103,27 +127,35 @@ function parseHeader(header) {
   return link;
 }*/
 
-//GET items by a specified query
+// GET items by a specified query
 function query(query) {
-  const queryString = querystring.stringify({
-    'query': query,
-    'version': `${version}`
-  });
   return new Promise((resolve, reject) => {
-    if (!query) return reject(new ReferenceError('No query specified'));
+    if (!query) {
+      return reject(new ReferenceError('No query specified'));
+    }
 
-    request(`${host}/api/items/?${queryString}`, function(error, response, body) {
-      if (error) return reject(error);
-      resolve(JSON.parse(body));
+    const queryString = querystring.stringify({
+      query,
+      version
+    });
+
+    return request(`${host}/api/items/?${queryString}`, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(JSON.parse(body));
     });
   });
 }
 
-//POST a new image
+// POST a new image
 function image(gtin, image) {
   return new Promise((resolve, reject) => {
-    if (!fs.existsSync(image)) return reject('The image does not exist!');
-    request.post({
+    if (!fs.existsSync(image)) {
+      return reject(new Error('The image does not exist!'));
+    }
+
+    return request.post({
       url: `${host}/api/items/${gtin}/images/?version=${version}`,
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -131,14 +163,16 @@ function image(gtin, image) {
       formData: {
         image: fs.createReadStream(image),
       }
-    }, function(error, response, body) {
-      if (error) return reject(error);
-      resolve(JSON.parse(body));
+    }, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(JSON.parse(body));
     });
   });
 }
 
-//Export the module
+// Export the module
 exports.item = item;
 
 exports.update = update;
@@ -148,7 +182,7 @@ exports.list = list;
 
 exports.page = page;
 
-//exports.all = all;
+// exports.all = all;
 
 exports.query = query;
 
