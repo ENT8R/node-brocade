@@ -1,6 +1,6 @@
 {
   "name": "datakick",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A library for making requests to the datakick.org API",
   "main": "index.min.js",
   "scripts": {
