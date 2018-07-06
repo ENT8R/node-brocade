@@ -9,6 +9,8 @@ const expect = chai.expect;
 
 const datakick = require('../index.js');
 
+const Helper = require('../lib/helper.js');
+
 
 describe('datakick', function() {
   this.slow(1500);
@@ -149,4 +151,64 @@ describe('datakick', function() {
       });
     });
   });
+
+  describe('#image()', () => {
+    it('should return an error when the GTIN and the image path are not present', () => {
+      return datakick.image().then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(ReferenceError);
+      });
+    });
+
+    it('should return an error when the image is not specified', () => {
+      return datakick.image('000000000000').then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(ReferenceError);
+      });
+    });
+
+    it('should return an error when the image does not exist', () => {
+      return datakick.image('000000000000', 'path/to/image.jpg').then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(ReferenceError);
+      });
+    });
+  });
+});
+
+describe('Helper', function() {
+  this.slow(1500);
+
+  describe('#request', () => {
+    it('should return an error when the options object is not present', () => {
+      return Helper.request().then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(ReferenceError);
+      });
+    });
+  });
+
+  describe('#request', () => {
+    it('should return an error when the page could not be loaded', () => {
+      return Helper.request({
+        hostname: 'www.datakick.org',
+        path: '/items/api/000000000000?version=1',
+        method: 'GET'
+      }).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(Error);
+      });
+    });
+  });
+
 });
