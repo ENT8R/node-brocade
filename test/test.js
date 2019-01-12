@@ -24,6 +24,15 @@ describe('datakick', function() {
       });
     });
 
+    it('should return an error when the GTIN is incorrect', () => {
+      return datakick.item(100).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(TypeError);
+      });
+    });
+
     it('should return an error when the GTIN is not present', () => {
       return datakick.item().then(() => {
         return Promise.reject(new Error('Expected method to reject.'));
@@ -49,6 +58,15 @@ describe('datakick', function() {
       });
     });
 
+    it('should return an error when the GTIN is incorrect', () => {
+      return datakick.update(100, { name: 'Mini Color-Rado' }).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(TypeError);
+      });
+    });
+
     it('should return an error when the GTIN and the options are not present', () => {
       return datakick.update().then(() => {
         return Promise.reject(new Error('Expected method to reject.'));
@@ -66,6 +84,15 @@ describe('datakick', function() {
         expect(error).to.be.an.instanceof(ReferenceError);
       });
     });
+
+    it('should return an error when the options are empty', () => {
+      return datakick.update('000000000000', {}).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(ReferenceError);
+      });
+    });
   });
 
   describe('#add()', () => {
@@ -75,6 +102,15 @@ describe('datakick', function() {
       }).catch((error) => {
         expect(error).to.be.an('error');
         expect(error).to.be.an.instanceof(Error);
+      });
+    });
+
+    it('should return an error when the GTIN is incorrect', () => {
+      return datakick.add(100, { name: 'Mini Color-Rado' }).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(TypeError);
       });
     });
 
@@ -122,6 +158,14 @@ describe('datakick', function() {
       }).catch((error) => {
         expect(error).to.be.an('error');
         expect(error).to.be.an.instanceof(ReferenceError);
+      });
+    });
+
+    it('should return an error when the page does not exist', () => {
+      return datakick.page(10000).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
       });
     });
   });
@@ -201,6 +245,21 @@ describe('Helper', function() {
       return Helper.request({
         hostname: 'www.datakick.org',
         path: '/items/api/000000000000?version=1',
+        method: 'GET'
+      }).then(() => {
+        return Promise.reject(new Error('Expected method to reject.'));
+      }).catch((error) => {
+        expect(error).to.be.an('error');
+        expect(error).to.be.an.instanceof(Error);
+      });
+    });
+  });
+
+  describe('#request', () => {
+    it('should return an error when the page does not exist', () => {
+      return Helper.request({
+        hostname: 'www.datakik.org',
+        path: '/api/items/000000000000?version=1',
         method: 'GET'
       }).then(() => {
         return Promise.reject(new Error('Expected method to reject.'));
