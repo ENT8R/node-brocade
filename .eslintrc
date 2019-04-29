@@ -23,15 +23,11 @@
             "allowTemplateLiterals": false
         }],
         "brace-style": 2,
-
-        // just to make sure (are defaults)
         "indent": ["error", 2],
 
-        // technically required, because of CSP
         "no-eval": 2,
         "no-implied-eval": 2,
 
-        // great new EcmaScript features
         "prefer-const": 2,
         "no-var": 1,
         "prefer-arrow-callback": 1,
@@ -42,7 +38,6 @@
         "symbol-description": 2,
         "object-shorthand": 1,
         "prefer-promise-reject-errors": 2,
-        /* "prefer-destructuring": 1, */ // https://github.com/eslint/eslint/issues/10250
 
         // additional rules
         "no-new-object": 2,
@@ -61,10 +56,8 @@
         "no-void": 1,
         "vars-on-top": 1,
         "yoda": ["error", "never"],
-        /* "no-warning-comments": 1, */ // should be enabled later
         "require-await": 1,
         "wrap-iife": ["error", "inside"],
-        "no-loop-func": 2,
-        "linebreak-style": 1, // may be disabled if contributing on Windows
+        "no-loop-func": 2
     }
 }
