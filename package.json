@@ -3,6 +3,9 @@
   "version": "1.1.6",
   "description": "A library for making requests to the datakick.org API",
   "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "nyc mocha && eslint **.js",
