@@ -1,18 +1,24 @@
 # datakick
 
-[![dependencies Status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick)
-[![Travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick)
-[![NPM Version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick)
-[![NPM Downloads](https://img.shields.io/npm/dt/datakick.svg)](https://www.npmjs.org/package/datakick)
-[![Coverage Status](https://coveralls.io/repos/github/ENT8R/datakick/badge.svg?branch=master)](https://coveralls.io/github/ENT8R/datakick?branch=master)
+[![dependencies status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick)
+[![travis](https://travis-ci.org/ENT8R/datakick.svg?branch=master)](https://travis-ci.org/ENT8R/datakick)
+[![npm version](http://img.shields.io/npm/v/datakick.svg)](https://www.npmjs.org/package/datakick)
+[![npm downloads](https://img.shields.io/npm/dt/datakick.svg)](https://www.npmjs.org/package/datakick)
+[![coverage Status](https://coveralls.io/repos/github/ENT8R/datakick/badge.svg?branch=master)](https://coveralls.io/github/ENT8R/datakick?branch=master)
 
 
-> NodeJS module for making requests to the [Datakick API](https://www.datakick.org/api)
+> Module for making requests to the [Datakick API](https://www.datakick.org/api)
 
 ## Installation
 
+### npm
 ```
 npm install datakick --save
+```
+
+### unpkg
+```
+<script src="https://unpkg.com/datakick@1.2.0/dist/datakick.min.js"></script>
 ```
 
 ## Usage
@@ -20,9 +26,9 @@ npm install datakick --save
 ```javascript
 const datakick = require('datakick');
 
-datakick.item('4335896051932').then(function(data) {
+datakick.item('4335896051932').then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -32,9 +38,9 @@ datakick.item('4335896051932').then(function(data) {
 ### Get an item by its GTIN
 
 ```javascript
-datakick.item('4335896051932').then(function(data) {
+datakick.item('4335896051932').then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -45,9 +51,9 @@ datakick.item('4335896051932').then(function(data) {
 datakick.update('000000000000', {
   name: 'Test',
   brand_name: 'Test Brand'
-}).then(function(data) {
+}).then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -58,9 +64,9 @@ datakick.update('000000000000', {
 datakick.add('000000000000', {
   name: 'Test',
   brand_name: 'Test Brand'
-}).then(function(data) {
+}).then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -68,9 +74,9 @@ datakick.add('000000000000', {
 ### List the first 100 products
 
 ```javascript
-datakick.list().then(function(data) {
+datakick.list().then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -78,9 +84,9 @@ datakick.list().then(function(data) {
 ### List all items of a specific page
 
 ```javascript
-datakick.page('20').then(function(data) {
+datakick.page('20').then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -88,9 +94,9 @@ datakick.page('20').then(function(data) {
 ### Search for items
 
 ```javascript
-datakick.query('peanut butter').then(function(data) {
+datakick.query('peanut butter').then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
@@ -98,9 +104,9 @@ datakick.query('peanut butter').then(function(data) {
 ### Upload an image
 
 ```javascript
-datakick.image('000000000000', 'image.jpg').then(function(data) {
+datakick.image('000000000000', 'image.jpg').then(data => {
   console.log(JSON.stringify(data));
-}).catch(function(error) {
+}).catch(error => {
   console.log(error.message);
 });
 ```
