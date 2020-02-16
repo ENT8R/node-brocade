@@ -1,3 +1,5 @@
+# ⚠️ datakick.org shut down on March 31, 2020 ⚠️
+
 # datakick
 
 [![dependencies status](https://david-dm.org/ent8r/datakick/status.svg)](https://david-dm.org/ent8r/datakick)
