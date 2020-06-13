@@ -1,1 +1,1 @@
-module.exports = require('./lib/datakick');
+module.exports = require('./lib/brocade');

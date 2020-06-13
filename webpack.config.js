@@ -5,8 +5,8 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'datakick.min.js',
-    library: 'datakick',
+    filename: 'main.min.js',
+    library: 'node-brocade',
     libraryTarget: 'umd'
   },
   node: {
