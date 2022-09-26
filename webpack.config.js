@@ -1,15 +1,16 @@
-const path = require('path');
-
 module.exports = {
   mode: 'production',
   entry: './index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'main.min.js',
-    library: 'node-brocade',
-    libraryTarget: 'umd'
+    library: {
+      name: 'node-brocade',
+      type: 'umd'
+    }
   },
-  node: {
-    fs: 'empty'
+  resolve: {
+    fallback: {
+      fs: false
+    }
   }
 };
