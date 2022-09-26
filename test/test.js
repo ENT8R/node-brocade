@@ -9,7 +9,7 @@ const querystring = require('../lib/querystring.js');
 const request = require('../lib/request.js');
 
 describe('brocade', function() {
-  this.slow(2000);
+  this.slow(2500);
 
   describe('#item()', () => {
     it('should return the data of an item without error', done => {
@@ -197,7 +197,7 @@ describe('querystring', () => {
 });
 
 describe('request', function() {
-  this.slow(2000);
+  this.slow(2500);
 
   it('should return an error when the URL is not present', () => {
     return request().then(() =>
