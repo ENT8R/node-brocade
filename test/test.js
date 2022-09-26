@@ -4,6 +4,7 @@
 const { expect } = require('chai');
 
 const brocade = require('../index.js');
+const errors = require('../lib/errors.js');
 const querystring = require('../lib/querystring.js');
 const request = require('../lib/request.js');
 
@@ -19,7 +20,7 @@ describe('brocade', function() {
       return brocade.item(100).then(() =>
         Promise.reject(new Error('Expected method to reject.'))
       ).catch(error =>
-        expect(error).to.be.an('error').and.to.be.an.instanceof(TypeError)
+        expect(error).to.be.an('error').and.to.be.an.instanceof(errors.NotFoundError)
       );
     });
 
@@ -217,12 +218,11 @@ describe('request', function() {
   it('should return an error when the page does not exist', () => {
     return request('https://www.brocde.io/api/items/000000000000?version=1').then(() =>
       Promise.reject(new Error('Expected method to reject.'))
-    ).catch(error =>
-      expect(error).to.be.an('object').and.to.include({
-        errno: 'ENOTFOUND',
-        code: 'ENOTFOUND'
-      })
-    );
+    ).catch(error => {
+      expect(error).to.be.an('error').and.to.nested.include({
+        'cause.code': 'ENOTFOUND'
+      });
+    });
   });
 
 });
