@@ -1,10 +1,9 @@
 # brocade
 
-[![dependencies status](https://david-dm.org/ent8r/node-brocade/status.svg)](https://david-dm.org/ent8r/node-brocade)
-[![travis](https://travis-ci.org/ENT8R/node-brocade.svg?branch=master)](https://travis-ci.org/ENT8R/node-brocade)
+![test](https://github.com/ENT8R/node-brocade/actions/workflows/test.yml/badge.svg?branch=master)
 [![npm version](http://img.shields.io/npm/v/node-brocade.svg)](https://www.npmjs.org/package/node-brocade)
 [![npm downloads](https://img.shields.io/npm/dt/node-brocade.svg)](https://www.npmjs.org/package/node-brocade)
-[![coverage Status](https://coveralls.io/repos/github/ENT8R/node-brocade/badge.svg?branch=master)](https://coveralls.io/github/ENT8R/node-brocade?branch=master)
+[![coverage](https://coveralls.io/repos/github/ENT8R/node-brocade/badge.svg?branch=master)](https://coveralls.io/github/ENT8R/node-brocade?branch=master)
 
 
 > Module for making requests to the [Brocade API](https://www.brocade.io/documentation)
