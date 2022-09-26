@@ -215,14 +215,4 @@ describe('request', function() {
     );
   });
 
-  it('should return an error when the page does not exist', () => {
-    return request('https://www.brocde.io/api/items/000000000000?version=1').then(() =>
-      Promise.reject(new Error('Expected method to reject.'))
-    ).catch(error => {
-      expect(error).to.be.an('error').and.to.nested.include({
-        'cause.code': 'ENOTFOUND'
-      });
-    });
-  });
-
 });
