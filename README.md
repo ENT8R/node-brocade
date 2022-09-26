@@ -17,7 +17,7 @@ npm install node-brocade --save
 
 ### unpkg
 ```
-<script src="https://unpkg.com/node-brocade@2.0.0/dist/main.min.js"></script>
+<script src="https://unpkg.com/node-brocade@2.0.1/dist/main.min.js"></script>
 ```
 
 ## Usage
