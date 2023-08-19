@@ -5,7 +5,7 @@
   "main": "index.js",
   "unpkg": "dist/main.min.js",
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "files": [
     "dist/",
